@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-//import 'package:flutter_svg/flutter_svg.dart';
 
 import '../ViewModels/commande_view_model.dart';
+import 'Auth_provider.dart';
 import 'Custom_widgets/app_bar.dart';
 import 'Custom_widgets/filled_button.dart';
 import 'Custom_widgets/side_menu.dart';
 import '../Utils/colors.dart';
 import 'commande_view.dart';
-//import './Custom_widgets/filled_button.dart';
-//import './colors.dart';
 
 class PaiementPage extends StatelessWidget {
-  const PaiementPage({super.key, required String title});
+  const PaiementPage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: CustomAppBar(
-          title: 'Paiement',
-        ),
-        endDrawer: CustomSideMenu(),
-        body: Center(
-          child: Container(
+    return Consumer<AuthProvider>(
+      builder: (context, authProvider, _) {
+        return Scaffold(
+          appBar: CustomAppBar(
+            title: 'Paiement',
+          ),
+          endDrawer: CustomSideMenu(),
+          body: Center(
+            child: Container(
               margin: const EdgeInsets.fromLTRB(16, 4, 16, 64),
               width: double.infinity,
               child: Column(
@@ -31,7 +34,11 @@ class PaiementPage extends StatelessWidget {
                     flex: 1,
                     child: Container(
                       margin: const EdgeInsets.only(
-                          bottom: 10.0, top: 10.0, left: 50.0, right: 50.0),
+                        bottom: 10.0,
+                        top: 10.0,
+                        left: 50.0,
+                        right: 50.0,
+                      ),
                       child: const SizedBox(
                         height: 80.0,
                         child: Text(
@@ -56,17 +63,25 @@ class PaiementPage extends StatelessWidget {
                     text: 'Commencer le scann',
                     onPressed: () async {
                       final commandeViewModel = Provider.of<CommandeViewModel>(
-                          context,
-                          listen: false);
+                        context,
+                        listen: false,
+                      );
+
                       commandeViewModel.setCommande(null);
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => CommandView()),
+                        MaterialPageRoute(
+                          builder: (context) => CommandView(),
+                        ),
                       );
                     },
                   ),
                 ],
-              )),
-        ));
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 }

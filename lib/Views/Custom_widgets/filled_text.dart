@@ -36,24 +36,6 @@ class CustomFilledText extends StatelessWidget {
             ),
           ),
         ),
-        /*SizedBox(
-          height: 20,
-          child: TextField(
-            // controller: controller,
-            keyboardType: keyboardType,
-            obscureText: obscureText,
-            style: const TextStyle(
-              color: AppColors.backgroundColor,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-            decoration: const InputDecoration(
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              border: InputBorder.none,
-            ),
-          ),
-        ),*/
 
         Container(
           constraints: const BoxConstraints(

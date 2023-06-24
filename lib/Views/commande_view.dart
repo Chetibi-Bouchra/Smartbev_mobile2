@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smartbevmobile2/ViewModels/commande_view_model.dart';
-import 'package:smartbevmobile2/Views/paiement_client_info_view.dart';
+
+import 'package:smartbevmobile2/Views/scanner.dart';
 
 import 'Custom_widgets/app_bar.dart';
+import 'Custom_widgets/commande_display.dart';
+
 import 'Custom_widgets/side_menu.dart';
 
 class CommandView extends StatefulWidget {
@@ -38,34 +41,13 @@ class _CommandViewState extends State<CommandView> {
               child: Consumer<CommandeViewModel>(
                 builder: (context, commandeViewModel, child) {
                   if (_text == '') {
-                    return ElevatedButton(
-                      onPressed: () {
-                        Provider.of<CommandeViewModel>(context, listen: false)
-                            .fetchCommandebById("bloody mary");
-                      },
-                      child: Text('Change Data'),
-                    );
-                    /*QRViewExample(
-                            key: GlobalKey(), onUpdateText: _updateText);*/
+                    return QRViewExample(
+                        key: GlobalKey(), onUpdateText: _updateText);
                   }
-                  return /*DisplayCommande(commandeViewModel: commandeViewModel);*/
-                      PaiementInfoPage(
-                    title: 'Paiement',
-                  );
+                  return DisplayCommande(commandeViewModel: commandeViewModel);
                 },
               ),
-              /*child: _text.isEmpty
-                  ? QRViewExample(key: GlobalKey(), onUpdateText: _updateText)
-                  : PaiementWidget(text: _text),*/
             ),
-
-            /*ElevatedButton(
-              onPressed: () {
-                Provider.of<CommandeViewModel>(context, listen: false)
-                    .fetchCommandebById("11007");
-              },
-              child: Text('Change Data'),
-            ),*/
           ],
         ),
       )),

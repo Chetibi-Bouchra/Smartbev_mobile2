@@ -13,3 +13,15 @@ launchPaiementPage(BuildContext context) {
 launchPaiementInfoPage(BuildContext context) {
   Navigator.pushNamed(context, paiementInfoPage);
 }
+
+launchFacturesInfoPage(BuildContext context) {
+  Navigator.pushNamed(context, facturesPage);
+}
+
+launchAuthenticationPage(BuildContext context) {
+  Navigator.pushNamed(context, authentificationPage);
+}
+
+launchProfilePage(BuildContext context) {
+  Navigator.pushNamed(context, profilePage);
+}

@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smartbevmobile2/Utils/colors.dart';
+
+import 'package:smartbevmobile2/Views/welcome_view.dart';
 import 'package:smartbevmobile2/routes/routes.dart';
 import 'ViewModels/commande_view_model.dart';
-import 'Views/authentication_view.dart';
+import 'Views/Auth_provider.dart';
+
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => AuthProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -50,9 +58,9 @@ class MyApp extends StatelessWidget {
                 color: AppColors.textColor),
           ),
         ),
-        home: Scaffold(
+        home: const Scaffold(
           backgroundColor: AppColors.backgroundColor,
-          body: AuthenticationPage(),
+          body:  WelcomeView(),
         ),
         initialRoute: '/',
         routes: getRoutes(),

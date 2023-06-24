@@ -5,7 +5,7 @@ import 'package:smartbevmobile2/Utils/Const.dart';
 
 class PaymentAPI {
   Future<void> sendPayment(Payment paymentInstance) async {
-    const apiUrl = '$paymentURI/create-payment-intent';
+    const apiUrl = createPaymentIntent;
     final headers = {'Content-Type': 'application/json'};
     final body = jsonEncode({
       'amount': paymentInstance.amount,
@@ -18,7 +18,6 @@ class PaymentAPI {
     final response =
         await http.post(Uri.parse(apiUrl), headers: headers, body: body);
 
-    print(response.body);
     if (response.statusCode == 200) {
       print('Data sent successfully');
     } else {

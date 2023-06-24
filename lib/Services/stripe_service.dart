@@ -33,7 +33,6 @@ class StripeService {
     if (response.statusCode == 200) {
       final responseData = jsonDecode(response.body);
 
-      print(jsonDecode(response.body));
       PaymentMethodObject payment = PaymentMethodObject.fromJson(responseData);
       
       return payment;

@@ -38,7 +38,8 @@ class _WelcomePageState extends State<WelcomeView> {
               ),
               CustomFilledButton(
                 text: 'Commencer',
-                onPressed: () {
+                onPressed: () async {
+                  //print(CommandesAPI().fetchCommandByid("1"));
                   Navigator.pushNamed(context, '/paiement');
 
                   /*Navigator.push(
